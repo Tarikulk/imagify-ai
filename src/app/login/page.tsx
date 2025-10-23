@@ -38,8 +38,10 @@ const AuthenticationPage = () => {
       </div>
 
       {/* Right Side */}
-      <div className="relative flex flex-col items-center justify-center p-8 h-full">
+      <div className="relative flex flex-col items-center justify-center p-8 h-full  w-full">
+       <div className="max-w-xl mx-auto">
        <AuthForm />
+       </div>
       </div>
     </main>
   );
