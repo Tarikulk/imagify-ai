@@ -2,8 +2,9 @@
 import React, { useState } from "react";
 import LoginForm from "./LoginForm";
 import { Button } from "../ui/button";
-import SignupForm from "./SignupForm"; 
+import SignupForm from "./SignupForm";
 import Link from "next/link";
+import ResetPassword from "./ResetPassword";
 
 const AuthForm = () => {
   const [mode, setMode] = useState("login");
@@ -80,7 +81,18 @@ const AuthForm = () => {
           </p>
         </>
       )}
-      {mode === "reset" && <span>Reset Password Form</span>}
+      {mode === "reset" && (
+        <>
+          <ResetPassword />
+            <Button
+              variant={"link"}
+              className="p-0 text-center w-full"
+              onClick={() => setMode("login")}
+            >
+            Back To Log in
+            </Button>
+        </>
+      )}
     </div>
   );
 };
