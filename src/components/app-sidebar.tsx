@@ -13,6 +13,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { createClient } from "@/lib/supabase/server";
+import { NavUser } from "./nav-user";
 
 export async function AppSidebar({
   ...props
@@ -21,6 +22,12 @@ export async function AppSidebar({
 
   const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
+
+  const user = {
+    name : data.user?.user_metadata.full_name,
+    email : data.user?.email ?? "",
+
+  }
 
   console.log(data);
 
@@ -43,7 +50,11 @@ export async function AppSidebar({
       <SidebarContent>
         <NavMain />
       </SidebarContent>
-      <SidebarFooter>{/* <NavUser user={data.user} /> */}</SidebarFooter>
+      <SidebarFooter>
+        
+        <NavUser user={user} />
+
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   );
